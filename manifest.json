@@ -1,16 +1,27 @@
 {
-  "description": "Demonstrating webRequests",
+  "description": "Launch certain URLs with external programs",
   "manifest_version": 2,
-  "name": "webRequest-demo",
+  "name": "external-app-launcher",
   "version": "1.0",
 
   "permissions": [
     "webRequest",
     "webRequestBlocking",
+    "storage",
     "<all_urls>"
   ],
 
   "background": {
     "scripts": ["background.js"]
+  },
+
+  "options_ui": {
+    "page": "options.html"
+  },
+
+  "applications": {
+    "gecko": {
+      "id": "externalapp@example.com"
+    }
   }
 }
