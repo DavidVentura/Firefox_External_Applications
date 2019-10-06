@@ -3,9 +3,6 @@ function onError(error) {
   console.log(`Error: ${error}`);
 }
 function onSettingsObtained(item) {
-    var a = JSON.stringify(item);
-    console.log(`From extension, got ${a}`);
-
     var f = logURL(item.forwarding_server, item.forward.split(','), item.block.split(','));
     browser.webRequest.onBeforeRequest.addListener(
       f,
@@ -18,9 +15,7 @@ var getting = browser.storage.sync.get(["block", "forward", "forwarding_server"]
 getting.then(onSettingsObtained, onError);
 
 function logURL(forwarding_server, forward_list, block_list) {
-    console.log(forwarding_server, forward_list, block_list);
     function _logURL(requestDetails) {
-      console.log("inside", forwarding_server, forward_list, block_list);
       if(requestDetails.url.startsWith(forwarding_server))
           return;
     
@@ -29,7 +24,7 @@ function logURL(forwarding_server, forward_list, block_list) {
       }
     
       if (block_list.some(b => requestDetails.url.includes(b))) {
-          console.log("Blocking" + requestDetails.url);
+          console.log("Blocking ", requestDetails.url);
           return {cancel: true};
       }
     }
