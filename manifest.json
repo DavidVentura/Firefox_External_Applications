@@ -1,5 +1,5 @@
 {
-  "description": "Launch certain URLs with external programs",
+  "description": "Launch certain URLs with external programs. License is GPLv3. Code can be found at https://github.com/DavidVentura/Firefox_External_Applications. Icon by Freepik from flaticon.com",
   "manifest_version": 2,
   "name": "external-app-launcher",
   "version": "1.0",
@@ -23,5 +23,8 @@
     "gecko": {
       "id": "externalapp@example.com"
     }
+  },
+  "icons": {
+      "48": "icons/icon.png"
   }
 }
